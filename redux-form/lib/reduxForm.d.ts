@@ -64,6 +64,20 @@ export interface Config<FormData extends DataShape, P, S> {
     destroyOnUnmount?: boolean;
 
     /**
+     * Reinitialize the form every time the initialValues prop changes.
+     * Defaults to false.
+     */
+    enableReinitialize?: boolean;
+
+    /**
+     * Whether or not to force unregistration of fields -- use in conjunction with
+     * destroyOnUnmount. Useful for wizard-type forms where you want to destroy
+     * fields as they unmount, but not the form's state. Defaults to false, as forms
+     * are normally unregistered on unmount.
+     */
+    forceUnregisterOnUnmount?: boolean;
+
+    /**
      * A function that takes the entire Redux state and returns the state slice
      * which corresponds to where the redux-form reducer was mounted. This
      * functionality is rarely needed, and defaults to assuming that the reducer
@@ -80,27 +94,12 @@ export interface Config<FormData extends DataShape, P, S> {
     keepDirtyOnReinitialize?: boolean;
 
     /**
-     * If true, implements `shouldComponentUpdate` and shallowly compares _only_
-     * the Redux-connected props that are needed to manage the form state. This
-     * prevents unnecessary updates, but assumes the component is a "pure"
-     * component and does not rely on any input or state other than its props and
-     * the selected Redux store's state. Defaults to true.
-     */
-    pure?: boolean;
-
-    /**
      * The values with which to initialize your form in componentWillMount().
      * Particularly useful when Editing Multiple Records, but can also be used
      * with single-record forms. The values should be in the form
      * { field1: 'value1', field2: 'value2' }.
      */
     initialValues?: FormData;
-
-    /**
-     * Reinitialize the form every time the initialValues prop changes.
-     * Defaults to false.
-     */
-    enableReinitialize?: boolean;
 
     /**
      * The function to call with the form data when the handleSubmit() is fired
@@ -137,6 +136,15 @@ export interface Config<FormData extends DataShape, P, S> {
      * namespace collisions.
      */
     propNamespace?: string;
+
+    /**
+     * If true, implements `shouldComponentUpdate` and shallowly compares _only_
+     * the Redux-connected props that are needed to manage the form state. This
+     * prevents unnecessary updates, but assumes the component is a "pure"
+     * component and does not rely on any input or state other than its props and
+     * the selected Redux store's state. Defaults to true.
+     */
+    pure?: boolean;
 
     /**
      * The use of this property is highly discouraged, but if you absolutely
