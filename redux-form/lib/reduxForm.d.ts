@@ -20,7 +20,7 @@ export function reduxForm(
 ): FormDecorator<any, any, any>;
 
 export interface FormDecorator<FormData extends DataShape, P, S> {
-    <T extends (typeof Component)>(component: T): T & Form<FormData, P, S>;
+    <T extends (typeof Component)>(component: T): T & ReduxForm<FormData, P, S>;
 }
 
 export interface Config<FormData extends DataShape, P, S> {
@@ -277,7 +277,7 @@ export class SubmissionError<FormData extends DataShape> extends Error {
  * The following are methods or properties that you can access on an instance
  * of your decorated form component (outermost component named "ReduxForm").
  */
-export interface Form<FormData extends DataShape, P, S> extends Component<P, any> {
+export interface ReduxForm<FormData extends DataShape, P, S> extends Component<P, any> {
     /**
      * true if the form data has changed from its initialized values. Opposite
      * of pristine.
