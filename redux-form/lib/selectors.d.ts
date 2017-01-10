@@ -72,3 +72,18 @@ export const isValid: BooleanSelector;
  * errors. The opposite of isValid.
  */
 export const isInvalid: BooleanSelector;
+
+/**
+ * Returns `true` if the form is submitting.
+ */
+export const isSubmitting: BooleanSelector;
+
+/**
+ * Returns `true` if the form has previously been successfully submitted.
+ */
+export const hasSubmitSucceeded: BooleanSelector;
+
+/**
+ * Returns `true` if the form has previously failed to submit.
+ */
+export const hasSubmitFailed: BooleanSelector;
