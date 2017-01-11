@@ -40,6 +40,11 @@ export interface BooleanSelector {
 export const getFormValues: DataSelector;
 
 /**
+ * Returns the form asynchronous validation errors.
+ */
+export const getFormAsyncErrors: ErrorSelector;
+
+/**
  * Returns the form synchronous validation errors.
  */
 export const getFormSyncErrors: ErrorSelector;
