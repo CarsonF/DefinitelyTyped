@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { Component, HTMLAttributes } from 'react';
 import { Field, GenericField, reduxForm, WrappedFieldProps, BaseFieldProps } from "redux-form";
+import { FormSection } from "./lib/FormSection";
 
 interface CustomComponentProps {
     customProp: string;
@@ -25,6 +26,8 @@ class CustomField extends Component<BaseFieldProps & CustomComponentProps, {}> {
     }
 }
 
+const SFC = (props: HTMLAttributes<{}>) => <div {...props} />;
+
 interface FormData {
     foo: string;
     custom: string;
@@ -46,6 +49,9 @@ class MyForm extends Component<{}, {}> {
                     name='custom'
                     customProp='Hello'
                 />
+
+                <FormSection name="asdf" component={CustomComponent} />
+                <FormSection name="asdf" component={SFC} />
             </div>
         );
     }
