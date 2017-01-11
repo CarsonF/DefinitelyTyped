@@ -289,6 +289,17 @@ interface WrappedFieldMetaProps<S> {
     pristine: boolean;
 
     /**
+     * true if the form had onSubmit called and failed to submit for any reason.
+     * A subsequent successful submit will set it back to false.
+     */
+    submitFailed: boolean;
+
+    /**
+     * true if the field is currently being submitted
+     */
+    submitting: boolean;
+
+    /**
      * true if the field has been touched. By default this will be set when
      * the field is blurred.
      */
